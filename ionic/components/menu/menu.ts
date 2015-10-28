@@ -313,8 +313,8 @@ class MenuBackdrop {
    */
   constructor(@Host() menu: Menu, elementRef: ElementRef) {
     this.menu = menu;
-    //this.elementRef = elementRef;
-    //menu.backdrop = this;
+    this.elementRef = elementRef;
+    menu.backdrop = this;
   }
 
   /**
