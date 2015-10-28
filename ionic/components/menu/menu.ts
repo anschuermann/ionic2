@@ -53,7 +53,8 @@ import * as gestures from  './menu-gestures';
   ],
   defaultInputs: {
     'side': 'left',
-    'type': 'reveal'
+    'type': 'reveal',
+    'enableMenuWithBackViews': false
   },
   outputs: ['opening'],
   host: {
@@ -271,6 +272,14 @@ export class Menu extends Ion {
     return this.backdrop.elementRef.nativeElement;
   }
 
+  /**
+   * TODO
+   * @return {boolean}
+   */
+  isMenuWithBackViewsEnabled() {
+    return this.enableMenuWithBackViews;
+  }
+
   static register(name, cls) {
     menuTypes[name] = cls;
   }
@@ -304,8 +313,8 @@ class MenuBackdrop {
    */
   constructor(@Host() menu: Menu, elementRef: ElementRef) {
     this.menu = menu;
-    this.elementRef = elementRef;
-    menu.backdrop = this;
+    //this.elementRef = elementRef;
+    //menu.backdrop = this;
   }
 
   /**

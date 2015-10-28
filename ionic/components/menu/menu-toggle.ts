@@ -4,7 +4,7 @@ import {Ion} from '../ion';
 import {IonicApp} from '../app/app';
 import {ViewController} from '../nav/view-controller';
 import {Navbar} from '../nav-bar/nav-bar';
-
+import {Menu} from '../menu/menu';
 
 /**
 * TODO
@@ -21,14 +21,18 @@ import {Navbar} from '../nav-bar/nav-bar';
 })
 export class MenuToggle extends Ion {
 
+  private menu:Menu;
+
   constructor(
     app: IonicApp,
     elementRef: ElementRef,
+    menu: Menu,
     @Optional() viewCtrl: ViewController,
     @Optional() navbar: Navbar
   ) {
     super(elementRef, null);
     this.app = app;
+    this.menu = menu;
     this.viewCtrl = viewCtrl;
     this.withinNavbar = !!navbar;
   }
@@ -44,7 +48,7 @@ export class MenuToggle extends Ion {
 
   get isHidden() {
     if (this.withinNavbar && this.viewCtrl) {
-      return !this.viewCtrl.isRoot();
+      return !this.viewCtrl.isRoot() && !this.menu.isMenuWithBackViewsEnabled()
     }
     return false;
   }
